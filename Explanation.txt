@@ -1,0 +1,106 @@
+ Address Book Project:
+
+Overview:-
+The project is a simple address book application written in the C programming language. It allows users to manage contacts by performing actions like adding, searching, editing, deleting, and listing contacts. It also initializes the address book with a set of pre-defined dummy contacts.
+
+
+
+Files and Their Roles
+1. `main.c`
+   - This is the entry point of the application.
+   - It contains a menu-driven interface that allows users to choose options like:
+     - Add a new contact
+     - Search for a contact
+     - Edit an existing contact
+     - Delete a contact
+     - List all contacts
+     - Exit the program
+   - Calls functions defined in other files to execute the selected actions.
+
+2. `contact.h`
+   - The header file that contains:
+     - `Contact` and `AddressBook` structure definitions.
+     - Function declarations for all the operations (e.g., `addContact`, `searchContact`).
+   - This ensures modularity and allows the main program to work with these functions and structures.
+
+3. `contact.c`
+   - Implements the core functionalities:
+     - Add a contact: Lets the user input a new contact's name, phone number, and email.
+     - Search a contact: Finds a contact by name and displays their details.
+     - Edit a contact: Allows updating the phone number and email of an existing contact.
+     - Delete a contact: Removes a contact from the address book by name.
+     - List all contacts: Displays all the contacts in the address book.
+   - Also contains the `initialize` function to initialize an empty address book.
+
+4. `dummy_contact.c`
+   - Contains the `loadDummyContacts` function.
+   - Populates the address book with pre-defined contacts when the program starts. This ensures the user has initial data to interact with.
+
+---
+
+Data Structures
+1. `Contact`
+   - Represents a single contact with:
+     - `name`: Name of the contact (up to 50 characters).
+     - `phone`: Phone number of the contact (up to 20 characters).
+     - `email`: Email address of the contact (up to 50 characters).
+
+2. `AddressBook`
+   - Represents the entire address book with:
+     - An array of `Contact` structures (`contacts`).
+     - `contactCount`: Tracks the number of contacts currently stored.
+
+---
+
+Functionality
+Here are the features of the application:
+
+1. Add Contact
+   - Prompts the user for a new contact's details.
+   - Validates that the address book isn't full before adding the contact.
+
+2. Search Contact
+   - Searches for a contact by name.
+   - Displays the details if found or informs the user if the contact doesn't exist.
+
+3. Edit Contact
+   - Lets the user modify the phone number and email of a contact by name.
+   - Informs the user if the contact is not found.
+
+4. Delete Contact
+   - Removes a contact by name.
+   - Shifts the remaining contacts in the array to maintain order.
+
+5. List Contacts
+   - Displays all the contacts stored in the address book.
+   - Includes both dummy contacts and any new ones added by the user.
+
+6. Exit
+   - Ends the program.
+
+---
+
+How It Works
+1. When the program starts, it:
+   - Initializes an empty address book.
+   - Loads dummy contacts using the `loadDummyContacts` function from `dummy_contact.c`.
+
+2. The user interacts with the menu in a loop until they choose to exit.
+   - Each option calls the corresponding function in `contact.c`.
+
+3. Example Execution Flow:
+   - Start the program.
+   - View the list of dummy contacts.
+   - Add a new contact (e.g., "Jane Doe").
+   - Search for "Jane Doe" to confirm it's added.
+   - Edit Jane's contact details.
+   - Delete "Jane Doe."
+   - Exit the program.
+
+---
+
+Key Points
+- Modularity: The program is split into multiple files for clarity and maintainability.
+- Scalability: The `MAX_CONTACTS` constant defines the maximum number of contacts. This can be increased if needed.
+- Dummy Data: Provides initial data so the user can immediately interact with the system without adding contacts.
+
